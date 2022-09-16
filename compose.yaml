@@ -1,0 +1,27 @@
+version: "3"
+
+volumes:
+  pg_data: {}
+
+services:
+
+  postgres:
+    container_name: postgres
+    image: postgres:14-alpine
+    env_file:
+      - .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data:z
+  django:
+    image: digglepress/optimise_django_orm
+    container_name: django
+    build: .
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+    command: /start
+    env_file:
+      - .env
+    ports:
+      - "80:8000"

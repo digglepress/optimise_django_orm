@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+<div><strong>post: </strong>{{ post.title }}</div>
+{% with post.user as user %}
+    <div><strong>user: </strong>{{ user.first_name }} {{ user.last_name }}</div>
+{% endwith %}
+{% with post.comments as comments %}
+    <div>
+        <ul>
+            {% for comment in comments.all %}
+                <li>{{ comment }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endwith %}
+<a href="{% url 'blog:post_list' %}">post list</a>
+</body>
+</html>

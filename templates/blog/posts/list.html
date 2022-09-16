@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+</head>
+<body>
+<ul>
+    {% for post in posts %}
+        <li><strong>title: </strong>
+            <a href="{% url "blog:post_detail" post.id %}">{{ post.title }}</a>
+            <div>
+                <small>
+                    <strong>writer: </strong>
+                    <a href="{% url "users:detail" post.user_id %}">
+                        {{ post.user.get_full_name }}
+                    </a>
+                </small>
+                <small>
+                    <strong>comments: </strong> {{ post.comments.count }}
+                </small>
+            </div>
+        </li>
+        <br>
+    {% endfor %}
+</ul>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ user.get_full_name }}</title>
+</head>
+<body>
+<div>
+<h4>User</h4>
+    <table border="1" width="50%">
+        <tr>
+            <th>name</th>
+            <th>phone</th>
+            <th>website</th>
+        </tr>
+        <tr>
+            <td>{{ user.get_full_name }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.website }}</td>
+        </tr>
+    </table>
+</div>
+<div>
+<h4>Posts</h4>
+    <table border="1" width="50%">
+      <tr>
+        <th>title</th>
+        <th>body</th>
+      </tr>
+        {% for post in user.posts.all %}
+            <tr>
+                <td>{{ post.title | truncatewords:5 }}</td>
+                <td>{{ post.body | truncatewords:10 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+<div>
+<h4>Todos</h4>
+    <table border="1" width="50%">
+      <tr>
+        <th>title</th>
+        <th>completed</th>
+      </tr>
+        {% for todo in user.todos.all %}
+            <tr>
+                <td>{{ todo.title | truncatewords:5 }}</td>
+                <td>{{ todo.completed | yesno }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
