@@ -35,4 +35,4 @@ jobs:
         with:
           context: "{{defaultContext}}"
           push: true
-          tags: digglepress/optimise_django_orm:$GITHUB_SHA::5
+          tags: digglepress/optimise_django_orm:${GITHUB_SHA::5}
