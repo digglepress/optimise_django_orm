@@ -24,13 +24,13 @@ jobs:
       - name: Build and push (Latest)
         uses: docker/build-push-action@v3
         with:
-          context: {{defaultContext}}
+          context: "{{defaultContext}}"
           push: true
           tags: digglepress/optimise_django_orm:latest
 
       - name: Build and push (Github SHA)
         uses: docker/build-push-action@v3
         with:
-          context: {{defaultContext}}
+          context: "{{defaultContext}}"
           push: true
           tags: digglepress/optimise_django_orm:${GITHUB_SHA::5}
