@@ -30,9 +30,7 @@ jobs:
 
       - name: Build and push (Github SHA)
         uses: docker/build-push-action@v3
-        env:
-          $GITHUB_SHA: ${{ github.sha }}
         with:
           context: "{{defaultContext}}"
           push: true
-          tags: digglepress/optimise_django_orm:${GITHUB_SHA::5}
+          tags: digglepress/optimise_django_orm:${{ github.sha }}
